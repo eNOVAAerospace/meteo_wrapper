@@ -3,9 +3,9 @@ import csv
 import os
 from datetime import date
 
-today_date = date.today()
+today_date = str(date.today())
 country = "FR"
-output_file = f'{country}_{str(today_date)}_weather.csv'
+output_file = f'{country}_{today_date}_weather.csv'
 
 
 def get_weather_data(station_code, date_str, writer):
@@ -45,4 +45,4 @@ if not os.path.isfile(output_file):
 with open(output_file, 'a', newline='') as csv_file:
     writer = csv.writer(csv_file)
     for code in airport_codes:
-        get_weather_data(code, str(today_date), writer)
+        get_weather_data(code, today_date, writer)

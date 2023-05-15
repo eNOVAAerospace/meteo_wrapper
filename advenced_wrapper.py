@@ -1,7 +1,7 @@
 import requests
 import csv
 import os
-
+from datetime import datetime
 
 def get_weather_data(station_code, start_date, end_date, writer):
     year, month, day = start_date.split('-')
@@ -39,6 +39,7 @@ def read_parameters(file_name):
 
 
 if __name__ == "__main__":
+    print("date + heure actuelle : " + str(datetime.now()))
     country, start_date, end_date = read_parameters("parameter.txt")
     output_file = f'{country}_{start_date}_{end_date}_weather.csv'
     airport_codes = read_airport_codes(f'OACI_{country}.txt')

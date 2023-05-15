@@ -1,12 +1,12 @@
 import requests
 import csv
 import os
-from datetime import date
 
 
-def get_weather_data(station_code, date_str, writer):
-    year, month, day = date_str.split('-')
-    url = f'https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station={station_code}&data=all&year1={year}&month1={month}&day1={day}&year2={year}&month2={month}&day2={day}&tz=Etc%2FUTC&format=onlycomma&latlon=no&direct=no&report_type=1&report_type=2'
+def get_weather_data(station_code, start_date, end_date, writer):
+    year, month, day = start_date.split('-')
+    year2, month2, day2 = end_date.split('-')
+    url = f'https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station={station_code}&data=all&year1={year}&month1={month}&day1={day}&year2={year2}&month2={month2}&day2={day2}&tz=Etc%2FUTC&format=onlycomma&latlon=no&direct=no&report_type=1&report_type=2'
     response = requests.get(url)
     data = response.content.decode('utf-8')
 
@@ -25,11 +25,23 @@ def read_airport_codes(filename):
     return airport_codes
 
 
+def read_parameters(file_name):
+    with open(file_name, "r") as file:
+        parameters = {}
+        for line in file:
+            key, value = line.strip().split(":")
+            parameters[key.strip()] = value.strip()
+    country = parameters.get("country")
+    start_date = parameters.get("start date")
+    end_date = parameters.get("end date")
+
+    return country, start_date, end_date
+
+
 if __name__ == "__main__":
-    airport_codes = read_airport_codes('OACI_FR.txt')
-
-    output_file = f'{country}_{today_date}_weather.csv'
-
+    country, start_date, end_date = read_parameters("parameter.txt")
+    output_file = f'{country}_{start_date}_{end_date}_weather.csv'
+    airport_codes = read_airport_codes(f'OACI_{country}.txt')
     # Check if output file exists, if not create it
     if not os.path.isfile(output_file):
         with open(output_file, 'w', newline='') as csv_file:
@@ -43,4 +55,4 @@ if __name__ == "__main__":
     with open(output_file, 'a', newline='') as csv_file:
         writer = csv.writer(csv_file)
         for code in airport_codes:
-            get_weather_data(code, today_date, writer)
+            get_weather_data(code, start_date, end_date, writer)

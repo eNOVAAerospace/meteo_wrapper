@@ -1,5 +1,7 @@
 # Weather wrapper
 
+> Project realized by Antoine Rovini, student at Epitech Technology, Promo 2025.
+
 ----
 The following program **oaci.py** is a program that takes in parameter a **OACI_[country].txt** file where the [country] define the code of a country, for exemple, France will be France, United States of America would be USA, and so on.
 

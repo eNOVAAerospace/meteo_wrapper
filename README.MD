@@ -1,55 +1,72 @@
-# Weather wrapper
+# Meteo Wrapper
+
 
 > Project realized by Antoine Rovini, student at Epitech Technology, Promo 2025.
 
-----
-The following program **oaci.py** is a program that takes in parameter a **OACI_[country].txt** file where the [country] define the code of a country, for exemple, France will be France, United States of America would be USA, and so on.
-
-------------------
-
-# How to use the program
-
-To launch the program, launch a terminal (shell) on your pc, Windows, Mac, or Linux.
-
-![img.png](for_readme/img.png)
-
-Once you have opened your command prompt, go to the location of the file using the command:
-
-> **cd the/path/** for Linux and Mac,
-> 
-> **cd \the\path\\** for Windows.
-
-Once you are in the right directory, you can execute the following command:
-
-> **python oaci.py**
-
-Once the comande is complete, it will show you a file named **[country]_[date]_weather.csv rght beside the python script:
-
-![img_1.png](for_readme/img_1.png)
-
-You will be able to open the csv file with Microsoft Excel or any other editor that accept the csv format.
-
 -------
-# How to edit the program
 
-Now to edit the program, so it can take any date or any country you want, you will have to open in your favorite editor (for exemple PyCharm or Notepad) the file oaci.py.
+### /!\ respect the instructions to not break anything
+### /!\ eNOVA use only
 
-Once you opened it, you will see the the line 5 the **date** variable. The date is in the following format : YYYY-MM-DD
+----------
 
-![img_2.png](for_readme/img_2.png)
+The following program advenced_wrapper.py is a program that takes in parameter a OACI_[country].txt file where to
+[country] define the code of a country, for exemple, France will be France, United States of America would be USA, and
+so on.
 
-If you want to have a specific date, you will have to modify this paramter to another year, month and date in the correct format.
-> if the format is incorrect, it will not launch and won't operate correctly!
+-----------
 
-As for the country, if you want to edit it, you can see in the line 30 this:
+## How to : data_retriever.exe
 
-![img_3.png](for_readme/img_3.png)
+You will see a program named "data_retriever.exe" in your file explorer. Keep in mind to not move any file to prevent
+its non functionnality.
 
-To change the country you want to retrieve data from, you will have to put a file name **[country]_OACI.txt** instead of **OACI_FR.txt** This fiel contain all OACI codes from the airports of one country.
-You'll have to edit on the line 6 as well something.
+![img.png](for readme/img.png)
 
-![img_4.png](for_readme/img_4.png)
+We will double-click on the file and see what it does.
 
-As you can see, the file starts with the mention **FR**, you'll have to use the right country code.
+![img_1.png](for readme/img_1.png)
 
-Once all those modifications are done, you can have all the daily meteorologic datas of one said country!
+it will say the start and end date of the retrieval of the data. You will have to keep the windows open to let it
+retrieve data, otherwise it will shut down the program as well. Once the program finishes it task, it will automatically
+close itself, and you will have a file named like this : "FR_2023-05-07_2023-05-07_weather.csv"
+
+![img_2.png](for readme/img_2.png)
+
+If you want to change the start, end date or the country of the data retrieving process, you have to open the
+"parameter.txt" file. it will present itself as is :
+
+![img_3.png](for readme/img_3.png)
+
+to edit the dates, keep the same format, being : YYYY-MM-DD (Year Month Day), otherwise you will have wrong dates, or it
+won't work. For the country, you can see there are file with country code and the 'OACI_' prefix.
+
+![img_4.png](for readme/img_4.png)
+
+In the 'parameter.txt' file, you will write the name of the file without the prefix or the extension file, the program
+will handle itself it. So for exemple, Country Code 'FR' in the parameter file mean the program will read the file named
+'OACI_FR.txt' file.
+
+To keep the program functionning, keep the same format for a new file you will create, being the following : 
+
+![img_5.png](for readme/img_5.png)
+
+-------------------
+
+## How To : data_sort.exe
+
+To launch the program, you will have to double-click on the file named "data_sort.exe". It will open a window :
+
+![img_6.png](for readme/img_6.png)
+
+When it asks the namefile, enter the file you want to filter. In this case, it will be
+'FR_2023-05-07_2023-05-07_weather'. No need to put the extension of the file.
+
+![img_7.png](for readme/img_7.png)
+
+Once you entered the file, it will ask you the data you want to filter and therefore, keep. If for example, you want to
+keep the station row, you will type '0', followed by a space if you want other datas. We will type in 0, 1, and 29.
+
+![img_8.png](for readme/img_8.png)
+
+Once it's done, it will notify it is done effectively, and will automatically close itself.
